@@ -1,0 +1,90 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: auto auto auto 1fr;
+  margin: 0;
+}
+
+.fileReader {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  background-color: #ccc;
+  color: #333;
+  border: 3px dashed #aaa;
+  cursor: grab;
+}
+
+.or {
+  line-height: 1;
+  text-align: center;
+}
+
+.urlReader {
+  display: flex;
+}
+
+.urlReader input {
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  height: 40px;
+  font-size: 100%;
+}
+
+.urlReader button {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  margin-left: 10px;
+  width: 20%;
+  height: 40px;
+  font-size: 100%;
+}
+
+.fileReader.-drag {
+  background-color: #bbb;
+}
+
+.result {
+  overflow: scroll;
+}
+
+.result table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+.result th,
+.result td {
+  padding: 5px 10px;
+}
+
+
+.result .-newprice {
+  font-weight: bold;
+}
+
+.result thead tr {
+  background-color: #eee;
+}
+
+.result tr:hover {
+  background-color: #eee;
+}
+
+.result th {
+  font-weight: normal;
+  text-align: left;
+}
+
+.result a {
+  cursor: pointer;
+}
