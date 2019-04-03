@@ -13,6 +13,16 @@ fileReadArea.addEventListener('dragleave', onDragLeave, false);
 
 urlButton.addEventListener('click', onClickUrlButton, false);
 
+window.document.addEventListener('DOMContentLoaded', onLoadDocument, false);
+
+async function onLoadDocument () {
+  const params = new URLSearchParams(window.location.search);
+  const json_url = params.get('url');
+  if (!json_url) return false;
+  const json = await fetchJSON(json_url);
+  render(json);
+}
+
 async function fetchJSON (url) {
   const proxy_url = `https://jsonp.afeld.me?url=${url}`;
   const res = await fetch(proxy_url);
@@ -28,7 +38,7 @@ function convertTextToJSON (text) {
 async function onClickUrlButton (e) {
   const input_url = urlInput.value;
   const json = await fetchJSON(input_url);
-  resultArea.innerHTML = template(json);
+  render(json);
 }
 
 function onDrop (e) {
@@ -43,7 +53,7 @@ function onDrop (e) {
 function onFileRead(e) {
   const result = e.target.result;
   const json = convertTextToJSON(result);
-  resultArea.innerHTML = template(json);
+  render(json);
 }
 
 function onDragEnter() {
@@ -100,4 +110,8 @@ function template (items) {
     </table>
   `;
   return table;
+}
+
+function render(data) {
+  resultArea.innerHTML = template(data);
 }
